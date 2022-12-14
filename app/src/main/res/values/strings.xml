@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Fact Chucker</string>
+    <string name="randomFact">Random Chuck Norris Fact</string>
+    <string name="getRandomFact">Get a Random Fact</string>
+    <string name="chuck">Chuck Norris</string>
+    <string name="fact">Fact</string>
+    <string name="animalFact">Animal Fact</string>
+    <string name="musicFact">Music Fact</string>
+    <string name="scienceFact">Science Fact</string>
+</resources>
