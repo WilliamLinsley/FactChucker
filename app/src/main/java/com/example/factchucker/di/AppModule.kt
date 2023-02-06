@@ -4,6 +4,8 @@ import com.example.factchucker.common.Constants
 import com.example.factchucker.data.remote.ChuckNorrisApi
 import com.example.factchucker.data.repository.JokeRepositoryImpl
 import com.example.factchucker.domain.repository.JokeRepository
+import com.example.factchucker.domain.usecase.GetJokeUseCase
+import com.example.factchucker.domain.usecase.random.GetJokeUseCaseRandomImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,5 +31,11 @@ object AppModule {
     @Singleton
     fun provideJokeRepository(api: ChuckNorrisApi): JokeRepository {
         return JokeRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetJokeUseCase(repo: JokeRepository): GetJokeUseCase {
+        return GetJokeUseCaseRandomImpl(repo)
     }
 }

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.factchucker.common.State.*
 import com.example.factchucker.domain.model.Joke
-import com.example.factchucker.domain.usecase.category.GetJokeByCategoryUseCase
+import com.example.factchucker.domain.usecase.category.GetJokeUseCaseCategoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -15,15 +15,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryJokeViewModel @Inject constructor(
-    private val getJokeByCategoryUseCase: GetJokeByCategoryUseCase,
+    private val getJokeUseCaseCategoryImpl: GetJokeUseCaseCategoryImpl,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val emptyJoke = Joke(emptyList(),"","","", "")
+    private val emptyJoke = Joke(emptyList(), "", "", "", "")
 
-    //Mutable state exposed to viewmodel (clean code, separation of concerns)
+    // Mutable state exposed to viewmodel (clean code, separation of concerns)
     private val _state = mutableStateOf(CategoryJokeState())
-    //Immutable state exposed to composables (clean code, separation of concerns)
+
+    // Immutable state exposed to composables (clean code, separation of concerns)
     val state: State<CategoryJokeState> = _state
 
     init {
@@ -32,8 +33,8 @@ class CategoryJokeViewModel @Inject constructor(
     }
 
     fun getJoke(category: String? = "") {
-        getJokeByCategoryUseCase(category).onEach { result ->
-            when(result) {
+        getJokeUseCaseCategoryImpl(category).onEach { result ->
+            when (result) {
                 is Success -> {
                     _state.value = CategoryJokeState(
                         joke = result.data ?: emptyJoke
@@ -52,5 +53,4 @@ class CategoryJokeViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
-
 }
