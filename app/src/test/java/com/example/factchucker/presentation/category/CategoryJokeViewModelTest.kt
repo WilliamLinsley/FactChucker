@@ -1,9 +1,11 @@
-package com.example.factchucker.presentation.joke
+package com.example.factchucker.presentation.category
 
 import com.example.factchucker.MainDispatcherRule
 import com.example.factchucker.common.State
 import com.example.factchucker.domain.model.Joke
 import com.example.factchucker.domain.usecase.FakeJokeUseCase
+import com.example.factchucker.presentation.joke.JokeState
+import com.example.factchucker.presentation.joke.RandomJokeViewModel
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -12,7 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class RandomJokeViewModelTest {
+class CategoryJokeViewModelTest {
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
