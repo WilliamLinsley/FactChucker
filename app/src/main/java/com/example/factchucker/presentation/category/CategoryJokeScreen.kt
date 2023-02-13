@@ -20,6 +20,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.factchucker.R
+import com.example.factchucker.common.Constants.START_SCREEN
 import com.example.factchucker.presentation.component.JokeItem
 import com.example.factchucker.presentation.ui.theme.*
 
@@ -40,7 +41,7 @@ fun CategoryJokeScreen(
             val (title, joke, randomButton) = createRefs()
 
             Text(
-                text = stringResource(R.string.chuck)+" $capString "+stringResource(R.string.fact),
+                text = stringResource(R.string.chuck) + " $capString " + stringResource(R.string.fact),
                 fontSize = 23.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.ExtraBold,
@@ -48,7 +49,7 @@ fun CategoryJokeScreen(
                 style = TextStyle(
                     shadow = Shadow(
                         color = transparentLight,
-                        offset = Offset(1f,1f),
+                        offset = Offset(1f, 1f),
                         blurRadius = 3f
                     )
                 ),
@@ -62,11 +63,12 @@ fun CategoryJokeScreen(
                     }
             )
 
-            LazyColumn(modifier = Modifier
-                .fillMaxWidth()
-                .constrainAs(joke) {
-                    top.linkTo(title.bottom, margin = 10.dp)
-                }
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .constrainAs(joke) {
+                        top.linkTo(title.bottom, margin = 10.dp)
+                    }
             ) {
                 item {
                     JokeItem(
@@ -78,7 +80,7 @@ fun CategoryJokeScreen(
             }
 
             Button(
-                onClick = { navController.navigate("joke_screen") },
+                onClick = { navController.navigate(START_SCREEN) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(buttonBG)

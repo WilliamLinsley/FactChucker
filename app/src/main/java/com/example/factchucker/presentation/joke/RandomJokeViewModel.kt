@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.factchucker.common.State.*
 import com.example.factchucker.domain.model.Joke
 import com.example.factchucker.domain.usecase.GetJokeUseCase
+import com.example.factchucker.presentation.JokeState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -11,6 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.factchucker.common.Constants.CATEGORY_PARAM
+import com.example.factchucker.common.Constants.START_SCREEN
 import com.example.factchucker.presentation.category.CategoryJokeScreen
 import com.example.factchucker.presentation.joke.JokeScreen
 import com.example.factchucker.presentation.ui.theme.FactChuckerTheme
@@ -27,22 +29,22 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = "joke_screen"
+                        startDestination = START_SCREEN
                     ) {
                         composable(
-                            route = "joke_screen"
+                            route = START_SCREEN
                         ) {
                             JokeScreen(navController = navController)
                         }
                         composable(
                             route = "category_joke_screen/{category}",
                             arguments = listOf(
-                                navArgument("category") {
+                                navArgument(CATEGORY_PARAM) {
                                     type = NavType.StringType
                                 }
                             )
                         ) {
-                            val cat = it.arguments?.getString("category")
+                            val cat = it.arguments?.getString(CATEGORY_PARAM)
                             CategoryJokeScreen(navController = navController, category = cat)
                         }
                     }

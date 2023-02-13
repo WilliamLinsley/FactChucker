@@ -4,6 +4,7 @@ import com.example.factchucker.MainDispatcherRule
 import com.example.factchucker.common.State
 import com.example.factchucker.domain.model.Joke
 import com.example.factchucker.domain.usecase.FakeJokeUseCase
+import com.example.factchucker.presentation.JokeState
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
